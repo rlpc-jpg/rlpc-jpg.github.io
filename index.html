@@ -1,26 +1,27 @@
 <h1 id="inf">inf</h1>
 <h5 id="ip">IP</h5>
-<p>LF: 192.168.210.1</p>
-<p>LP: 192.168.210.22</p>
-<p>WP: 192.168.210.33</p>
+<p>LF: 192.168.210.1 / IP wird beim aufstarten angezeigt</p>
+<p>LP: 192.168.210.22 / ipadr</p>
+<p>WP: 192.168.210.33  / ipconfig</p>
 <h4 id="how">how</h4>
-<h6 id="lp-">LP:</h6>
+<h6 id="lp-">LP und WP ping:</h6>
+<h6 id="lp-">LP ssh service update:</h6>
 <pre><code class="lang-bash">sudo apt-get <span class="hljs-keyword">update</span>
 sudo apt-<span class="hljs-keyword">get</span> <span class="hljs-keyword">install</span> openssh-<span class="hljs-keyword">server</span>
 sudo apt-<span class="hljs-keyword">get service</span> ssh <span class="hljs-keyword">status</span>
 </code></pre>
-<h6 id="wp-">WP:</h6>
+<h6 id="wp-">WP ssh conection + keygen + per ssh key auf LP kopieren:</h6>
 <pre><code class="lang-powershell"><span class="hljs-selector-tag">ssh</span> <span class="hljs-selector-tag">vmadmin</span>@<span class="hljs-keyword">192</span>.<span class="hljs-keyword">168</span>.<span class="hljs-keyword">210</span>.<span class="hljs-keyword">22</span>
 ssh-keygen
 scp C:\Users\vmadmin\.ssh\id_rsa.pub vmadmin@<span class="hljs-number">192.162</span>.<span class="hljs-number">210.22</span>:~/.ssh
 </code></pre>
-<h6 id="lp-">LP:</h6>
+<h6 id="lp-">LP in richtiges file kopieren:</h6>
 <pre><code class="lang-bash">cat <span class="hljs-regexp">/home/</span>vmadmin<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub &gt;&gt; <span class="hljs-regexp">/home/</span>vmadmin<span class="hljs-regexp">/.ssh/</span>authorized_keys
 </code></pre>
-<h6 id="wp-">WP:</h6>
+<h6 id="wp-">WP ssh verbindung via public key:</h6>
 <pre><code class="lang-powershell"><span class="hljs-selector-tag">ssh</span> <span class="hljs-selector-tag">-i</span> <span class="hljs-selector-tag">C</span>:\<span class="hljs-selector-tag">Users</span>\<span class="hljs-selector-tag">vmadmin</span>\<span class="hljs-selector-class">.ssh</span>\<span class="hljs-selector-tag">id_rsa</span> <span class="hljs-selector-tag">vmadmin</span>@<span class="hljs-keyword">192</span>.<span class="hljs-keyword">162</span>.<span class="hljs-keyword">210</span>.<span class="hljs-keyword">22</span>
 </code></pre>
-<h6 id="lp-">LP:</h6>
+<h6 id="lp-">LP passwort ssh deaktivieren:</h6>
 <ol>
 <li><p>/etc/ssh/sshd_config öffnen und nach PasswordAuthentication auf no setzten und # weg</p>
 </li>
