@@ -38,10 +38,8 @@ ssh -i C:\Users\vmadmin\.ssh\id_rsa vmadmin@192.162.210.22
 
 ###### LP:
 
-1.  /etc/ssh/sshd_config öffnen und nach PasswordAuthentication auf no setzten und # weg
+1. /etc/ssh/sshd_config öffnen und nach PasswordAuthentication auf no setzten und # weg
 
 2. ```bash
    sudo service ssh restart
    ```
-
-
